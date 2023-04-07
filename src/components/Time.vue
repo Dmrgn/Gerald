@@ -7,15 +7,20 @@
 
 <script type="ts">
 import moment from 'moment';
+
 export default {
     name: "Time",
     mounted () {
-        setInterval(()=>{
+        this.updateClock();
+        setInterval(this.updateClock, 999)
+    },
+    methods: {
+        updateClock() {
             const est = moment.utc().subtract(4,"hour");
             this.currentTime = `${est.format('h:mm:ss')}`
             this.currentDate = `${est.format('MMMM Do YYYY')}`;
             this.dateTimeString = `${est.year()}-${est.month()}-${est.day()}`;
-        }, 999)
+        }
     },
     data() {
         return {

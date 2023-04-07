@@ -1,4 +1,3 @@
 import { useStorageLocal } from '~/composables/useStorageLocal'
 
-export const storageDemo = useStorageLocal('webext-demo', 'Storage Demo')
-export const storedName = useStorageLocal('store-name', 'Name')
+export const favoritesStorage = useStorageLocal('store-name', 'Name')
