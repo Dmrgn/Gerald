@@ -7,14 +7,16 @@
             <div class="m-4">
                 <div v-for="(task, key) in taskList" :key="key">
                     <div>
-                        <button class="p-2 bg-white rounded w-12" type="button" @click="removeTask(key)"></button>
+                        <button class="p-2 m-2 bg-white rounded" type="button" @click="removeTask(key)">
+                            <img src="https://img.icons8.com/material-outlined/12/null/delete-sign.png"/>
+                        </button>
                         {{ task }}
                         <br>
                     </div>
                 </div>
                 <input class="border" @keyup.enter="addTask">
                 <br>
-                <button class="border" @click="clearTasks">
+                <button class="border m-2" @click="clearTasks">
                     clearTasks
                 </button>
                 <FavoritedMenu></FavoritedMenu>
@@ -28,8 +30,6 @@
     import Time from '../components/Time.vue'
     import FavoritedMenu from '../components/FavoritedMenu.vue'
     import { taskList } from '~/logic/storage'
-
-    // import IconClose from '~icons/material-symbols/close-rounded'
 
     export default {
         components: {
