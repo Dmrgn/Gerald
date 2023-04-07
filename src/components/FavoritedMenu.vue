@@ -11,6 +11,7 @@ export default {
     name: "FavoritedMenu",
     data() {
         return {
+
         }
     },
 }

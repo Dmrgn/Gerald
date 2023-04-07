@@ -4,7 +4,7 @@
         <div class="grid grid-cols-3">
             <div></div>
             <div></div>
-            <Favorited></Favorited>
+            <FavoritedMenu></FavoritedMenu>
         </div>
         <div v-for="(task, key) in taskList" :key="key">
             <div>
@@ -25,13 +25,13 @@
 
 <script lang="ts">
 import Time from '../components/Time.vue'
-import Favorited from '../components/FavoritedMenu.vue'
+import FavoritedMenu from '../components/FavoritedMenu.vue'
 import { taskList } from '~/logic/storage'
 
 export default {
     components: {
         Time,
-        Favorited
+        FavoritedMenu,
     },
     mounted () {
     },
@@ -39,12 +39,18 @@ export default {
         return {
         };
     },
+    methods: {
+        addTask() {
+            taskList.value.push(task.target.value)
+            task.target.value = ''
+        }
+    },
 }
 function addTask(task) {
   taskList.value.push(task.target.value)
   task.target.value = ''
 }
-function removeTask(task) {
+function removeTask(task: Element) {
   taskList.value.splice(task, 1)
 }
 function clearTasks() {
