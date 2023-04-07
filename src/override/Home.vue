@@ -4,58 +4,57 @@
         <div class="grid grid-cols-3">
             <div></div>
             <div></div>
-            <FavoritedMenu></FavoritedMenu>
-        </div>
-        <div v-for="(task, key) in taskList" :key="key">
-            <div>
-                <input type="button" value="x" @click="removeTask(key)"> {{ task }}
+            <div class="m-4">
+                <div v-for="(task, key) in taskList" :key="key">
+                    <div>
+                        <button class="p-2 bg-white rounded w-12" type="button" @click="removeTask(key)"></button>
+                        {{ task }}
+                        <br>
+                    </div>
+                </div>
+                <input class="border" @keyup.enter="addTask">
                 <br>
+                <button class="border" @click="clearTasks">
+                    clearTasks
+                </button>
+                <FavoritedMenu></FavoritedMenu>
             </div>
         </div>
-        <input class="border" @keyup.enter="addTask">
-        <br>
-        <input class="border" @keyup.enter="removeTask">
-        <br>
-        <button class="border" @click="clearTasks">
-            clearTasks
-        </button>
     </div>
-    
+
 </template>
 
 <script lang="ts">
-import Time from '../components/Time.vue'
-import FavoritedMenu from '../components/FavoritedMenu.vue'
-import { taskList } from '~/logic/storage'
+    import Time from '../components/Time.vue'
+    import FavoritedMenu from '../components/FavoritedMenu.vue'
+    import { taskList } from '~/logic/storage'
 
-export default {
-    components: {
-        Time,
-        FavoritedMenu,
-    },
-    mounted () {
-    },
-    data() {
-        return {
-        };
-    },
-    methods: {
-        addTask() {
-            taskList.value.push(task.target.value)
-            task.target.value = ''
-        }
-    },
-}
-function addTask(task) {
-  taskList.value.push(task.target.value)
-  task.target.value = ''
-}
-function removeTask(task: Element) {
-  taskList.value.splice(task, 1)
-}
-function clearTasks() {
-  taskList.value = []
-}
+    // import IconClose from '~icons/material-symbols/close-rounded'
+
+    export default {
+        components: {
+            Time,
+            FavoritedMenu,
+        },
+        data() {
+            return {
+                taskList: taskList
+            }
+        },
+        methods: {
+            addTask(task: Element) {
+                console.log(task);
+                taskList.value.push(task.target.value)
+                task.target.value = ''
+            },
+            removeTask(task: number) {
+                taskList.value.splice(task, 1)
+            },
+            clearTasks() {
+                taskList.value = []
+            },
+        },
+    }
 </script>
 
 <style lang="scss" scoped>
