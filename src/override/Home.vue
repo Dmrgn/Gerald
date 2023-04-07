@@ -1,13 +1,25 @@
-<script setup lang="ts">
-// import { storageDemo } from '~/logic/storage'
+<template>
+    <div class="w-full bg-red-200" style="height:100vh">
+        <Time></Time>
+    </div>
+</template>
 
-// function openOptionsPage() {
-//   browser.runtime.openOptionsPage()
-// }
+<script lang="ts">
+import Time from '../components/Time.vue'
+
+export default {
+    components: {
+        Time
+    },
+    mounted () {
+    },
+    data() {
+        return {
+        };
+    },
+}
 </script>
 
-<template>
-  <div class="w-full h">
-    test
-  </div>
-</template> 
+<style lang="scss" scoped>
+
+</style>
