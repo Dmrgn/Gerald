@@ -1,7 +1,7 @@
 <template>
-    <div class="absolute" style="bottom: 5vmin; left: 5vmin;">
-        <h1 class="mb-[-3vmin]" style="font-size: 10vmin;">{{currentTime}}</h1>
-        <h1 class="ml-[1vmin]" style="font-size: 2vmin;">{{currentDate}}</h1>
+    <div class="absolute z-20" style="bottom: 5vmin; left: 5vmin;">
+        <h1 class="mb-[-3vmin]" :style="'font-size: 10vmin; color: '+$root.secondaryColor+';'">{{currentTime}}</h1>
+        <h1 class="ml-[1vmin]" :style="'font-size: 2vmin; color: '+$root.secondaryColor+';'">{{currentDate}}</h1>
     </div>
 </template>
 

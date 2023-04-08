@@ -11,9 +11,9 @@
                 <div class="absolute top-5px bg-black w-[2px] h-[20px]" style="transform:rotate(45deg)"></div>
             </button>
         </div>
-        <div class="m-3 mb-2 bg-white rounded-lg border-solid border-4 border-gray-300" v-if="favorites.length === 0">
-            <p class="p-3">Looks like you haven't favourited anything yet...</p>
-        </div>
+    </div>
+    <div class="m-3 mb-2 bg-white rounded-lg border-solid border-4 border-gray-300" v-if="favorites.length === 0">
+        <p class="p-2 text-lg text-gray-500">Looks like you haven't favourited anything yet...</p>
     </div>
     <div class="flex flex-col m-3">
         <button class="mb-2 rounded-lg border-solid border-4 border-gray-300 bg-white w-20 p-2" @click="toggleEditing">Edit</button>

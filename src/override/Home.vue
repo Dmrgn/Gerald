@@ -11,25 +11,32 @@
                 <TaskList></TaskList>
             </div>
         </div>
+        <Clouds :color="primaryColor"></Clouds>
     </div>
 </template>
 
 <script lang="ts">
-    import Time from '../components/Time.vue'
-    import FavoritedMenu from '../components/FavoritedMenu.vue'
+    import Time from '~/components/Time.vue'
+    import FavoritedMenu from '~/components/FavoritedMenu.vue'
     import TaskList from '~/components/TaskList.vue';
+    import Clouds from '~/components/Clouds.vue'
 
     export default {
         components: {
             Time,
             FavoritedMenu,
             TaskList,
+            Clouds
         },
         mounted() {
             // change the background over the course of the day
             this.color = this.getBackground();
+            this.primaryColor = this.isDay?this.dayPrimary:this.nightPrimary;
+            this.secondaryColor = this.isDay?this.nightPrimary:this.dayPrimary;
             setInterval(() => {
                 this.color = this.getBackground();
+                this.primaryColor = this.isDay?this.dayPrimary:this.nightPrimary;
+                this.secondaryColor = this.isDay?this.nightPrimary:this.dayPrimary;
             }, 600)
             // track resize for proper column split
             window.onresize = this.resize;
@@ -54,9 +61,14 @@
                     'rgb(31, 17, 78)', 'rgb(25, 17, 80)'
                 ],
                 color: 'rgb(133, 227, 255)',
+                dayPrimary: 'rgb(255,255,255)',
+                nightPrimary: 'rgb(0,0,0)',
                 isSmallDisplay: 0,
                 width: 0,
-                height: 0
+                height: 0,
+                isDay: true,
+                primaryColor: "rgb(255, 255, 255)",
+                secondaryColor: "rgb(0, 0, 0)",
             }
         },
         methods: {
@@ -68,15 +80,24 @@
             },
             getBackground() {
                 const time = new Date();
+                let index = null;
                 if (6 <= time.getHours() && time.getHours() < 7) {
-                    return this.colors[59 - time.getMinutes()]
+                    index = 59 - time.getMinutes();
                 } else if (18 <= time.getHours() && time.getHours() < 19) {
-                    return this.colors[time.getMinutes()]
-                } else if (7 <= time.getHours() && time.getHours() < 18) {
-                    return 'rgb(133, 227, 255)'
-                } else {
-                    return 'rgb(25, 17, 80)'
+                    index = time.getMinutes();
                 }
+
+                index = 59;
+
+                if (index !== null) {
+                    this.isDay = index < 35;
+                    return this.colors[index];
+                }
+                
+                this.isDay = true;
+                if (7 <= time.getHours() && time.getHours() < 18)
+                    return 'rgb(133, 227, 255)'
+                return 'rgb(25, 17, 80)'
             }
         }
     }
