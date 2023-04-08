@@ -1,10 +1,10 @@
 <template>
-    <div class="w-full bg-red-200" style="height:100vh">
+    <div class="w-full" style="height:100vh">
         <Time></Time>
-        <div class="grid grid-cols-3">
+        <div class="grid grid-cols-4">
             <div></div>
             <div></div>
-
+            <div></div>
             <div class="m-4">
                 <TaskList></TaskList>
                 <div></div>
