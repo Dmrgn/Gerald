@@ -11,8 +11,8 @@
                 <div class="absolute top-5px bg-black w-[2px] h-[20px]" style="transform:rotate(45deg)"></div>
             </button>
         </div>
-        <div class="m-3 mb-2" v-if="favorites.length === 0">
-            <p>Looks like you haven't favourited anything yet...</p>
+        <div class="m-3 mb-2 bg-white rounded-lg border-solid border-4 border-gray-300" v-if="favorites.length === 0">
+            <p class="p-3">Looks like you haven't favourited anything yet...</p>
         </div>
     </div>
     <div class="flex flex-col m-3">
@@ -95,7 +95,7 @@ export default {
     
     .to-show {
         transform: scale(0, 0);
-        transition: transform 0.5s;
+        transition: all 0.5s;
     }
 
     .shown {

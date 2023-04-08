@@ -2,12 +2,12 @@
     <div class="w-full" :style="'height:100vh; ' +'background-color:'+color+';'">
         <Time></Time>
         <div :class="'grid ' + (isSmallDisplay == 1 ? 'grid-cols-3' : (isSmallDisplay == 2 ? 'grid-cols-2' : 'grid-cols-4'))">
-            <div class="m-4">
+            <div class="m-8">
                 <FavoritedMenu></FavoritedMenu>
             </div>
             <div v-if="isSmallDisplay == 0"></div>
             <div v-if="isSmallDisplay < 2"></div>
-            <div class="m-3">
+            <div class="m-8">
                 <TaskList></TaskList>
             </div>
         </div>
@@ -62,7 +62,7 @@
         methods: {
             resize() {
                 this.isSmallDisplay = (window.innerWidth <= 1800) ? 1 : 0;
-                this.isSmallDisplay = (window.innerWidth <= 1200) ? 2 : this.isSmallDisplay;
+                this.isSmallDisplay = (window.innerWidth <= 1300) ? 2 : this.isSmallDisplay;
                 this.width = window.innerWidth;
                 this.height = window.innerHeight;
             },

@@ -1,12 +1,11 @@
 <template>
-    <h2 class="text-2xl mx-3 mt-3 font-bold">Tasks</h2>
+    <h2 class="text-2xl mx-3 font-bold">Tasks</h2>
     <div v-for="(task, key) in taskList" :key="key">
         <div class="flex text-xl m-3">
             <button class="p-2 bg-white rounded-lg w-13 border-solid border-4 border-gray-300" type="button"
                 @click="removeTask(key)">
-
             </button>
-            <p class="p-2 ml-2 bg-white rounded-lg font-bold w-[80%] border-4 border-gray-300">{{ task }} </p>
+            <p class="p-2 ml-2 bg-white rounded-lg font-bold border-4 border-gray-300" style="width: 100%;">{{ task }} </p>
         </div>
     </div>
     <input
