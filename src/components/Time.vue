@@ -16,17 +16,19 @@ export default {
     },
     methods: {
         updateClock() {
-            const est = moment.utc().subtract(4,"hour");
-            this.currentTime = `${est.format('h:mm:ss')}`
-            this.currentDate = `${est.format('MMMM Do YYYY')}`;
-            this.dateTimeString = `${est.year()}-${est.month()}-${est.day()}`;
-        }
+          const est = moment.utc().subtract(4, "hour");
+          this.currentTime = `${est.format('h:mm:ss')}`
+          this.currentDate = `${est.format('MMMM Do YYYY')}`;
+          this.dateTimeString = `${est.year()}-${est.month()}-${est.day()}`;
+        },
+
     },
     data() {
         return {
             currentTime: "",
             currentDate: "",
-            dateTimeString: ""
+            dateTimeString: "",
+
         };
     },
 }
