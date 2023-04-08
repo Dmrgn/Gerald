@@ -1,14 +1,15 @@
 <template>
     <div class="w-full bg-red-200" style="height:100vh">
         <Time></Time>
-        <div class="grid grid-cols-3">
+        <div class="grid grid-cols-4">
+            <div></div>
             <div></div>
             <div></div>
             <div class="m-4">
                 <div v-for="(task, key) in taskList" :key="key">
                     <div>
                         <button class="p-2 m-2 bg-white rounded" type="button" @click="removeTask(key)">
-                            <img src="https://img.icons8.com/material-outlined/12/null/delete-sign.png"/>
+                            <img src="https://img.icons8.com/material-outlined/12/null/delete-sign.png" alt="error"/>
                         </button>
                         {{ task }}
                         <br>
@@ -58,5 +59,4 @@
 </script>
 
 <style lang="scss" scoped>
-
 </style>
