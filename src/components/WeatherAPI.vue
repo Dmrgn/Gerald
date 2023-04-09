@@ -1,8 +1,12 @@
+<template>
+  <div></div>
+</template>
+
 <script>
 
 export default {
-  name:"Weather",
-  mounted(){
+  name:"WeatherAPI",
+  mounted() {
     setInterval(this.updateWeatherData,5000)
   },
   data() {

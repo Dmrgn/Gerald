@@ -10,10 +10,9 @@
             <div v-if="isSmallDisplay < 2"></div>
             <div class="m-8">
                 <TaskList></TaskList>
-                <Calander></Calander>
             </div>
         </div>
-        <Weather></Weather>
+        <WeatherAPI></WeatherAPI>
     </div>
 </template>
 
@@ -21,18 +20,16 @@
     import Time from '~/components/Time.vue';
     import FavoritedMenu from '~/components/FavoritedMenu.vue';
     import TaskList from '~/components/TaskList.vue';
-    import Calander from '~/components/Calander.vue';
     import Clouds from '~/components/Clouds.vue'
-    import Weather from "~/components/WeatherAPI.vue";
-    
+    import WeatherAPI from "~/components/WeatherAPI.vue";
+
     export default {
         components: {
-          Weather,
+            WeatherAPI,
             Time,
             FavoritedMenu,
             TaskList,
             Clouds,
-            Calander
         },
         mounted() {
             // change the background over the course of the day
