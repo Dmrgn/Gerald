@@ -84,6 +84,7 @@
             getBackground() {
                 const time = new Date();
                 let index = null;
+
                 if (6 <= time.getHours() && time.getHours() < 7) {
                     index = 59 - time.getMinutes();
                 } else if (18 <= time.getHours() && time.getHours() < 19) {
