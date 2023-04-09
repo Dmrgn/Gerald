@@ -12,6 +12,7 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "noUnusedLocals": true,
+    "allowJs": true,
     "forceConsistentCasingInFileNames": true,
     "types": [
       "vite/client"

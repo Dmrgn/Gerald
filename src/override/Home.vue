@@ -1,7 +1,8 @@
 <template>
     <div class="w-full" :style="'height:100vh; ' +'background-color:'+color+';'">
         <Time></Time>
-        <div :class="'grid ' + (isSmallDisplay == 1 ? 'grid-cols-3' : (isSmallDisplay == 2 ? 'grid-cols-2' : 'grid-cols-4'))">
+        <Clouds :color="primaryColor"></Clouds>
+        <div :class="'z-20 relative grid ' + (isSmallDisplay == 1 ? 'grid-cols-3' : (isSmallDisplay == 2 ? 'grid-cols-2' : 'grid-cols-4'))">
             <div class="m-8">
                 <FavoritedMenu></FavoritedMenu>
             </div>
@@ -11,7 +12,6 @@
                 <TaskList></TaskList>
             </div>
         </div>
-        <Clouds :color="primaryColor"></Clouds>
     </div>
 </template>
 
@@ -87,16 +87,16 @@
                     index = time.getMinutes();
                 }
 
-                index = 59;
-
                 if (index !== null) {
                     this.isDay = index < 35;
                     return this.colors[index];
                 }
                 
-                this.isDay = true;
-                if (7 <= time.getHours() && time.getHours() < 18)
+                if (7 <= time.getHours() && time.getHours() < 18) {
+                    this.isDay = true;
                     return 'rgb(133, 227, 255)'
+                }
+                this.isDay = false;
                 return 'rgb(25, 17, 80)'
             }
         }

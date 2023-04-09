@@ -1,9 +1,9 @@
 <template>
-    <h2 class="mx-3 text-2xl font-bold">Favourites</h2>
+    <h2 class="mx-3 text-2xl font-bold" :style="'color:'+$root.secondaryColor">Favourites</h2>
     <div class="grid grid-cols-3">
-        <div class="text-center p-4 m-3 mb-2 relative aspect-square bg-white rounded-lg border-solid border-4 border-gray-300" v-for="(item, key) in favorites" :key="key">
+        <div class="parent text-center p-4 m-3 mb-2 relative aspect-square bg-white rounded-lg border-solid border-4 border-gray-300" v-for="(item, key) in favorites" :key="key" :data-index="key" @dragstart="dragStart" @dragend="dragEnd" @dragover="dragOver">
             <a class="" :href="item.url">
-                <img class="rounded-lg aspect-square" alt="error" :src="item.url" @error="imageError">
+                <img class="rounded-lg aspect-square" alt="error" :src="item.image" @error="imageError">
                 <p class="relative bottom-0 text-center mb-[-16px]">{{item.name}}</p>
             </a>
             <button :class="'absolute top-[-10px] right-[-10px] p-4 bg-white rounded-lg border-solid border-4 border-gray-300 aspect-square shadow to-show' + (isEditing ? 'shown': '')" @click="removeFavorite(key)">
@@ -26,7 +26,7 @@
     <br>
 </template>
 
-<script lang="ts">
+<script>
 import { favoritesStorage } from '../logic/storage'; 
 
 const ERROR_MESSAGES = {
@@ -35,7 +35,7 @@ const ERROR_MESSAGES = {
     tooMany: ["You can't have that many favourites!", "Too many favourites!", "How can you have that many favourites!"],
 };
 
-function isValidURL(str: string) {
+function isValidURL(str) {
   var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
     '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
     '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
@@ -45,23 +45,32 @@ function isValidURL(str: string) {
   return pattern.test(str);
 }
 
+async function isValidImage(str){
+     const res = await fetch(str);
+     const buff = await res.blob();
+     console.log(buff.type);
+     return buff.type.startsWith('image/')
+}
+
 export default {
     name: "FavoritedMenu",
     data() {
         return {
             favorites: favoritesStorage,
             isEditing: false, 
-            errorMessage: ""
+            errorMessage: "",
+            currentlyDragged: -1,
+            currentlyDraggedOver: -1
         }
     },
     methods: {
-        addFavorite() {
+        async addFavorite() {
             let item = {name: this.$refs.favoriteName.value, url: this.$refs.favoriteUrl.value, image: this.$refs.favoriteImage.value};
             if (!isValidURL(item.url)) {
                 this.errorMessage = ERROR_MESSAGES.url[Math.floor(Math.random()*ERROR_MESSAGES.url.length)];
                 return;
             }
-            if (!isValidURL(item.image)) {
+            if (!isValidImage(item.image)) {
                 this.errorMessage = ERROR_MESSAGES.image[Math.floor(Math.random()*ERROR_MESSAGES.image.length)];
                 return;
             }
@@ -74,11 +83,10 @@ export default {
             this.$refs.favoriteUrl.value = '';
             this.$refs.favoriteImage.value = '';
         },
-        removeFavorite(index: number) {
+        removeFavorite(index) {
             favoritesStorage.value.splice(index, 1)
         },
         imageError(e) {
-            console.log(e);
             e.target.src = "https://imgs.search.brave.com/2ZzQSooIyRSbIhX7hO4xd55xxVeZVnBGmOJ4ys62bp8/rs:fit:432:225:1/g:ce/aHR0cHM6Ly90c2Uy/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5W/RWhsU2owMV9zTnhV/RUZwR1lJUE13SGFJ/SSZwaWQ9QXBp";
         },
         toggleEditing() {
@@ -86,13 +94,24 @@ export default {
             this.$refs.favoriteUrl.value = '';
             this.$refs.favoriteImage.value = '';
             this.isEditing = !this.isEditing;
+        },
+        dragStart(e) {
+            this.currentlyDragged = Number(e.target.closest("div.parent").getAttribute("data-index"));
+        },
+        dragEnd() {
+            const temp = favoritesStorage.value.splice(this.currentlyDragged, 1);
+            favoritesStorage.value.splice(this.currentlyDraggedOver, 0, temp[0]);
+            this.currentlyDragged = -1;
+            this.currentlyDraggedOver = -1;
+        },
+        dragOver(e) {
+            this.currentlyDraggedOver = Number(e.target.closest("div.parent").getAttribute("data-index"));
         }
     },
 }
 </script>
 
 <style lang="scss" scoped>
-    
     .to-show {
         transform: scale(0, 0);
         transition: all 0.5s;
