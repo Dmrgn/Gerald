@@ -22,13 +22,14 @@
     import TaskList from '~/components/TaskList.vue';
     import Clouds from '~/components/Clouds.vue'
     import Weather from "~/components/WeatherAPI.vue";
+
     export default {
         components: {
           Weather,
             Time,
             FavoritedMenu,
             TaskList,
-            Clouds
+            Clouds,
         },
         mounted() {
             // change the background over the course of the day
@@ -83,6 +84,7 @@
             getBackground() {
                 const time = new Date();
                 let index = null;
+
                 if (6 <= time.getHours() && time.getHours() < 7) {
                     index = 59 - time.getMinutes();
                 } else if (18 <= time.getHours() && time.getHours() < 19) {
