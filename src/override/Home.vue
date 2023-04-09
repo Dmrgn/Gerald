@@ -12,6 +12,7 @@
                 <TaskList></TaskList>
             </div>
         </div>
+        <Weather></Weather>
     </div>
 </template>
 
@@ -20,9 +21,10 @@
     import FavoritedMenu from '~/components/FavoritedMenu.vue'
     import TaskList from '~/components/TaskList.vue';
     import Clouds from '~/components/Clouds.vue'
-
+    import Weather from "~/components/WeatherAPI.vue";
     export default {
         components: {
+          Weather,
             Time,
             FavoritedMenu,
             TaskList,
@@ -91,7 +93,7 @@
                     this.isDay = index < 35;
                     return this.colors[index];
                 }
-                
+
                 if (7 <= time.getHours() && time.getHours() < 18) {
                     this.isDay = true;
                     return 'rgb(133, 227, 255)'
