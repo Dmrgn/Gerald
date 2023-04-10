@@ -4,7 +4,7 @@ Gerald is a duck who you can hire to manage your web browsing needs. Gerald is v
 
 ## How do I use Gerald?
 
-1. Download the `extension.crx` from releases
+1. Download the `extension.crx` from [releases](https://github.com/Dmrgn/Gerald/releases/tag/v1.0.0)
 2. Navigate to `chrome://extensions`
 3. Enable developer mode
 4. Drag and drop the `extension.crx` file into the `chrome://extensions` page
