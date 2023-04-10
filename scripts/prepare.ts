@@ -12,7 +12,7 @@ async function stubIndexHtml() {
     'options',
     'popup',
     'background',
-    'override'
+    'override',
   ]
 
   for (const view of views) {
