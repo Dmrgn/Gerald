@@ -5,6 +5,7 @@
         <Gerald></Gerald>
         <Search></Search>
         <Clouds :color="primaryColor"></Clouds>
+        <Sky></Sky>
         <div :class="'z-20 relative grid ' + (isSmallDisplay == 1 ? 'grid-cols-3' : (isSmallDisplay == 2 ? 'grid-cols-2' : 'grid-cols-4'))">
             <div class="m-8">
                 <FavoritedMenu></FavoritedMenu>
@@ -19,13 +20,17 @@
 </template>
 
 <script lang="ts">
-    import Time from '~/components/Time.vue';
-    import FavoritedMenu from '~/components/FavoritedMenu.vue';
+    import Time from '~/components/Time.vue'
+    import FavoritedMenu from '~/components/FavoritedMenu.vue'
     import TaskList from '~/components/TaskList.vue';
     import Clouds from '~/components/Clouds.vue'
+
     import Weather from "~/components/Weather.vue";
+    import Sky from "~/components/Sky.vue"
+
     import Gerald from '~/components/Gerald.vue';
     import Search from '~/components/Search.vue';
+
 
     export default {
         components: {
@@ -34,8 +39,10 @@
             FavoritedMenu,
             TaskList,
             Clouds,
-            Gerald,
-            Search
+            Search,
+            Sky,
+            Gerald
+
         },
         mounted() {
             // change the background over the course of the day
@@ -91,9 +98,9 @@
                 const time = new Date();
                 let index = null;
 
-                if (6 <= time.getHours() && time.getHours() < 7) {
+                if (7 <= time.getHours() && time.getHours() < 8) {
                     index = 59 - time.getMinutes();
-                } else if (18 <= time.getHours() && time.getHours() < 19) {
+                } else if (19 <= time.getHours() && time.getHours() < 20) {
                     index = time.getMinutes();
                 }
 
@@ -102,7 +109,7 @@
                     return this.colors[index];
                 }
 
-                if (7 <= time.getHours() && time.getHours() < 18) {
+                if (8 <= time.getHours() && time.getHours() < 18) {
                     this.isDay = true;
                     return 'rgb(133, 227, 255)'
                 }
