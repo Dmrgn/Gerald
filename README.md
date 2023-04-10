@@ -10,6 +10,9 @@ Gerald is a duck who you can hire to manage your web browsing needs. Gerald is v
 4. Drag and drop the `extension.crx` file into the `chrome://extensions` page
 5. Open a new tab
 
+![Gerald](/screen3.png)
+![Gerald](/screen2.png)
+
 ## About
 
 Gerald was created for LyonHacks 3 with the theme 'productivity'. It is a chrome web extension which overrides the default new tab page with a productive set of tools for everyday web browsing.
