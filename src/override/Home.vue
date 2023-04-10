@@ -2,6 +2,7 @@
     <div class="w-full" :style="'height:100vh; ' +'background-color:'+color+';'">
         <Time></Time>
         <Clouds :color="primaryColor"></Clouds>
+        <Sky></Sky>
         <div :class="'z-20 relative grid ' + (isSmallDisplay == 1 ? 'grid-cols-3' : (isSmallDisplay == 2 ? 'grid-cols-2' : 'grid-cols-4'))">
             <div class="m-8">
                 <FavoritedMenu></FavoritedMenu>
@@ -22,14 +23,15 @@
     import TaskList from '~/components/TaskList.vue';
     import Clouds from '~/components/Clouds.vue'
     import Weather from "~/components/WeatherAPI.vue";
-
+    import Sky from "~/components/Sky.vue"
     export default {
         components: {
-          Weather,
+            Weather,
             Time,
             FavoritedMenu,
             TaskList,
             Clouds,
+            Sky
         },
         mounted() {
             // change the background over the course of the day
