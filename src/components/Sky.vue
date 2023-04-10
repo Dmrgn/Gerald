@@ -19,7 +19,11 @@ export default {
       ip:''
     }
   },
-  mounted() {
+  async mounted() {
+    while(this.sunup===false){
+      this.update()
+      await new Promise(r => setTimeout(r, 500));
+    }
     setInterval(this.update, 1000)
   },
   methods: {
@@ -45,10 +49,10 @@ export default {
             let h = 100
             let moonRadius = w / 2
             let sunRadius = w / 2 * 1.2
-            this.moonx = moonRadius * Math.cos(Math.PI*this.diff_minutes(new Date('01 Jan 1970 '+new Date().toTimeString()), new Date('01 Jan 1970 '+r['astronomy']['astro']['moonrise']))/this.diff_minutes(new Date('01 Jan 1970 '+r['astronomy']['astro']['moonrise']), new Date('01 Jan 1970 '+r['astronomy']['astro']['moonset'])))+w/2
-            this.moony = -moonRadius * Math.sin(Math.PI*this.diff_minutes(new Date('01 Jan 1970 '+new Date().toTimeString()), new Date('01 Jan 1970 '+r['astronomy']['astro']['moonrise']))/this.diff_minutes(new Date('01 Jan 1970 '+r['astronomy']['astro']['moonrise']), new Date('01 Jan 1970 '+r['astronomy']['astro']['moonset'])))+h
-            this.sunx = sunRadius * Math.cos(Math.PI*this.diff_minutes(new Date('01 Jan 1970 '+new Date().toTimeString()), new Date('01 Jan 1970 '+r['astronomy']['astro']['sunrise']))/this.diff_minutes(new Date('01 Jan 1970 '+r['astronomy']['astro']['sunrise']), new Date('01 Jan 1970 '+r['astronomy']['astro']['sunset'])))+w/2
-            this.suny = -sunRadius * Math.sin(Math.PI*this.diff_minutes(new Date('01 Jan 1970 '+new Date().toTimeString()), new Date('01 Jan 1970 '+r['astronomy']['astro']['sunrise']))/this.diff_minutes(new Date('01 Jan 1970 '+r['astronomy']['astro']['sunrise']), new Date('01 Jan 1970 '+r['astronomy']['astro']['sunset'])))+h*0.9
+            this.moonx = moonRadius * Math.cos(0.8*Math.PI*this.diff_minutes(new Date('01 Jan 1970 '+new Date().toTimeString()), new Date('01 Jan 1970 '+r['astronomy']['astro']['moonrise']))/this.diff_minutes(new Date('01 Jan 1970 '+r['astronomy']['astro']['moonrise']), new Date('01 Jan 1970 '+r['astronomy']['astro']['moonset']))+0.3)+w/2
+            this.moony = -moonRadius * Math.sin(0.8*Math.PI*this.diff_minutes(new Date('01 Jan 1970 '+new Date().toTimeString()), new Date('01 Jan 1970 '+r['astronomy']['astro']['moonrise']))/this.diff_minutes(new Date('01 Jan 1970 '+r['astronomy']['astro']['moonrise']), new Date('01 Jan 1970 '+r['astronomy']['astro']['moonset']))+0.3)+h
+            this.sunx = sunRadius * Math.cos(0.8*Math.PI*this.diff_minutes(new Date('01 Jan 1970 '+new Date().toTimeString()), new Date('01 Jan 1970 '+r['astronomy']['astro']['sunrise']))/this.diff_minutes(new Date('01 Jan 1970 '+r['astronomy']['astro']['sunrise']), new Date('01 Jan 1970 '+r['astronomy']['astro']['sunset']))+0.3)+w/2
+            this.suny = -sunRadius * Math.sin(0.8*Math.PI*this.diff_minutes(new Date('01 Jan 1970 '+new Date().toTimeString()), new Date('01 Jan 1970 '+r['astronomy']['astro']['sunrise']))/this.diff_minutes(new Date('01 Jan 1970 '+r['astronomy']['astro']['sunrise']), new Date('01 Jan 1970 '+r['astronomy']['astro']['sunset']))+0.3)+h*0.9
             /*
             console.log(this.moonx)
             console.log(this.moony)
@@ -57,6 +61,7 @@ export default {
              */
             //console.log(new Date('01 Jan 1970 '+new Date().toTimeString()))
             this.sunup=true;
+            this.moonup=true;
           }
       )
     }
