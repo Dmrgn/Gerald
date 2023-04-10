@@ -9,7 +9,7 @@ Gerald is a duck who you can hire to manage your web browsing needs. Gerald is v
 2. Extract the zip file
 3. Navigate to `chrome://extensions`
 4. Enable developer mode
-5. Click on `Load unpacked` in the top right corner
+5. Click on `Load unpacked` in the top left corner
 6. Select the extracted folder
 7. Open a new tab
 
