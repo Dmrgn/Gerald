@@ -33,7 +33,7 @@
         },
         methods: {
             addTask(task) {
-                if (taskList.value.length === 8) return;
+                if (taskList.value.length === 7) return;
                 taskList.value.push(task.target.value)
                 task.target.value = ''
             },
@@ -52,18 +52,6 @@
             dragOver(e) {
                 this.currentlyDraggedOver = Number(e.target.closest("div.parent").getAttribute("data-index"));
             }
-            // mouseDown(e) {
-            //     console.log("down");
-            //     this.currentlyDragged = Number(e.target.closest("div.parent").getAttribute("data-index"));
-            //     this.dragStartPos = {x: e.screenX, y: e.screenY};
-            // },
-            // mouseUp(e) {
-            //     const dragDifference = {x: e.screenX-this.dragStartPos.x, y: e.screenY-this.dragStartPos.y};
-            //     const moveAmount = Math.floor(dragDifference.x/52);
-            //     const temp = taskList.value.splice(this.currentlyDragged, 1);
-            //     console.log(this.currentlyDragged, moveAmount);
-            //     taskList.value.splice(Math.max(this.currentlyDragged+moveAmount,0), 0, temp[0]);
-            // },
         }
     }
 </script>

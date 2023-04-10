@@ -3,6 +3,7 @@
         <Time></Time>
         <Weather></Weather>
         <Gerald></Gerald>
+        <Search></Search>
         <Clouds :color="primaryColor"></Clouds>
         <div :class="'z-20 relative grid ' + (isSmallDisplay == 1 ? 'grid-cols-3' : (isSmallDisplay == 2 ? 'grid-cols-2' : 'grid-cols-4'))">
             <div class="m-8">
@@ -24,6 +25,7 @@
     import Clouds from '~/components/Clouds.vue'
     import Weather from "~/components/Weather.vue";
     import Gerald from '~/components/Gerald.vue';
+    import Search from '~/components/Search.vue';
 
     export default {
         components: {
@@ -32,7 +34,8 @@
             FavoritedMenu,
             TaskList,
             Clouds,
-            Gerald
+            Gerald,
+            Search
         },
         mounted() {
             // change the background over the course of the day
