@@ -1,7 +1,7 @@
 <template>
-    <div :class="'absolute rounded-full '" :style="'width: 10vw; height: 10vw; left:'+sunx+'vw; top: '+suny+'vh; background-color: orange;'">
+    <div :class="'absolute rounded-full '" :style="'width: 10vw; height: 10vw; left:'+sunx+'vw; top: '+suny+'vh; background-color: orange; filter: drop-shadow(1px 1px 8px #ff6622);'">
     </div>
-    <div :class="'absolute rounded-full '" :style="'width: 4vw; height: 4vw; left:'+(moonx)+'vw; top: '+moony+'vh; background-color: rgb(220, 220, 220);'">
+    <div :class="'absolute rounded-full '" :style="'width: 4vw; height: 4vw; left:'+(moonx)+'vw; top: '+moony+'vh; background-color: rgb(220, 220, 220); filter: drop-shadow(1px 1px 8px #aaaaaa);'">
     </div>
 </template>
 
