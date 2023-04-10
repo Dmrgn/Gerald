@@ -1,15 +1,15 @@
 <template>
-  <div class = "absolute z-20" style="bottom:30vmin; left:5vmin;">
-    <h1 class="mb-[-3vmin]" :style="'font-size: 6vmin; color: '+$root.secondaryColor+';'">{{city}}</h1>
-    <h1 class="ml-[1vmin] my-[1vmin]" :style="'font-size: 4vmin; color: '+$root.secondaryColor+';'">{{temp}}° - {{condition}}</h1>
+  <div class = "absolute z-20" style="bottom:18vmin; left:5vmin;">
+    <h1 class="ml-[1vmin] my-[1vmin] mb-[-2vmin]" :style="'font-size: 2vmin; color: '+$root.secondaryColor+';'">{{city}}</h1>
+    <h1 :style="'font-size: 6vmin; color: '+$root.secondaryColor+';'">{{temp}}° - {{condition}}</h1>
   </div>
+  <div class="absolute w-15vw h-1" :style="'background-color:'+$root.secondaryColor+'; bottom:18vmin; left:5vmin;'"></div>
 </template>
 
 <script>
 
 export default {
-  name:"Weather",
-
+  name:"WeatherAPI",
   data() {
     return {
       city : '',

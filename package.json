@@ -76,6 +76,7 @@
     "flowbite": "^1.6.4",
     "flowbite-vue": "^0.0.10",
     "moment": "^2.29.4",
+    "node-owoifier": "^1.0.0",
     "sass": "^1.61.0",
     "tailwind": "^4.0.0"
   }
