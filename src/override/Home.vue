@@ -1,6 +1,8 @@
 <template>
-    <div class="w-full" :style="'height:100vh; ' +'background-color:'+color+';'">
+    <div class="w-full relative" :style="'height:100vh; ' +'background-color:'+color+'; overflow: hidden;'">
         <Time></Time>
+        <Weather></Weather>
+        <Gerald></Gerald>
         <Clouds :color="primaryColor"></Clouds>
         <Sky></Sky>
         <div :class="'z-20 relative grid ' + (isSmallDisplay == 1 ? 'grid-cols-3' : (isSmallDisplay == 2 ? 'grid-cols-2' : 'grid-cols-4'))">
@@ -13,7 +15,6 @@
                 <TaskList></TaskList>
             </div>
         </div>
-        <Weather></Weather>
     </div>
 </template>
 
@@ -22,8 +23,13 @@
     import FavoritedMenu from '~/components/FavoritedMenu.vue'
     import TaskList from '~/components/TaskList.vue';
     import Clouds from '~/components/Clouds.vue'
+
     import Weather from "~/components/WeatherAPI.vue";
     import Sky from "~/components/Sky.vue"
+
+    import Gerald from '~/components/Gerald.vue';
+
+
     export default {
         components: {
             Weather,
@@ -32,6 +38,8 @@
             TaskList,
             Clouds,
             Sky
+            Gerald
+
         },
         mounted() {
             // change the background over the course of the day
