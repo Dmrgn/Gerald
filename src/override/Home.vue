@@ -37,7 +37,7 @@
             FavoritedMenu,
             TaskList,
             Clouds,
-            Sky
+            Sky,
             Gerald
 
         },
