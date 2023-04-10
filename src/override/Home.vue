@@ -24,7 +24,7 @@
     import TaskList from '~/components/TaskList.vue';
     import Clouds from '~/components/Clouds.vue'
 
-    import Weather from "~/components/WeatherAPI.vue";
+    import Weather from "~/components/Weather.vue";
     import Sky from "~/components/Sky.vue"
 
     import Gerald from '~/components/Gerald.vue';
