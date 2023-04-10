@@ -95,9 +95,9 @@
                 const time = new Date();
                 let index = null;
 
-                if (6 <= time.getHours() && time.getHours() < 7) {
+                if (7 <= time.getHours() && time.getHours() < 8) {
                     index = 59 - time.getMinutes();
-                } else if (18 <= time.getHours() && time.getHours() < 19) {
+                } else if (19 <= time.getHours() && time.getHours() < 20) {
                     index = time.getMinutes();
                 }
 
@@ -106,7 +106,7 @@
                     return this.colors[index];
                 }
 
-                if (7 <= time.getHours() && time.getHours() < 18) {
+                if (8 <= time.getHours() && time.getHours() < 18) {
                     this.isDay = true;
                     return 'rgb(133, 227, 255)'
                 }

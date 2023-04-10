@@ -1,7 +1,7 @@
 <template>
-    <div :class="'absolute rounded-full '" :style="'width: 6vw; height: 6vw; left:'+sunx+'vw; top: '+suny+'vw; background-color: orange;'">
+    <div :class="'absolute rounded-full '" :style="'width: 10vw; height: 10vw; left:'+sunx+'vw; top: '+suny+'vh; background-color: orange;'">
     </div>
-    <div :class="'absolute rounded-full '" :style="'width: 3vw; height: 3vw; left:'+(moonx)+'vw; top: '+moony+'vw; background-color: rgb(220, 220, 220);'">
+    <div :class="'absolute rounded-full '" :style="'width: 4vw; height: 4vw; left:'+(moonx)+'vw; top: '+moony+'vh; background-color: rgb(220, 220, 220);'">
     </div>
 </template>
 
@@ -43,12 +43,12 @@ export default {
             let r = (await response.json())
             let w = 100
             let h = 100
-            let moonRadius = w / 2 * 1.2
-            let sunRadius = w / 2 * 1.3
+            let moonRadius = w / 2
+            let sunRadius = w / 2 * 1.2
             this.moonx = moonRadius * Math.cos(Math.PI*this.diff_minutes(new Date('01 Jan 1970 '+new Date().toTimeString()), new Date('01 Jan 1970 '+r['astronomy']['astro']['moonrise']))/this.diff_minutes(new Date('01 Jan 1970 '+r['astronomy']['astro']['moonrise']), new Date('01 Jan 1970 '+r['astronomy']['astro']['moonset'])))+w/2
-            this.moony = -moonRadius * Math.sin(Math.PI*this.diff_minutes(new Date('01 Jan 1970 '+new Date().toTimeString()), new Date('01 Jan 1970 '+r['astronomy']['astro']['moonrise']))/this.diff_minutes(new Date('01 Jan 1970 '+r['astronomy']['astro']['moonrise']), new Date('01 Jan 1970 '+r['astronomy']['astro']['moonset'])))+h*1.2
+            this.moony = -moonRadius * Math.sin(Math.PI*this.diff_minutes(new Date('01 Jan 1970 '+new Date().toTimeString()), new Date('01 Jan 1970 '+r['astronomy']['astro']['moonrise']))/this.diff_minutes(new Date('01 Jan 1970 '+r['astronomy']['astro']['moonrise']), new Date('01 Jan 1970 '+r['astronomy']['astro']['moonset'])))+h
             this.sunx = sunRadius * Math.cos(Math.PI*this.diff_minutes(new Date('01 Jan 1970 '+new Date().toTimeString()), new Date('01 Jan 1970 '+r['astronomy']['astro']['sunrise']))/this.diff_minutes(new Date('01 Jan 1970 '+r['astronomy']['astro']['sunrise']), new Date('01 Jan 1970 '+r['astronomy']['astro']['sunset'])))+w/2
-            this.suny = -sunRadius * Math.sin(Math.PI*this.diff_minutes(new Date('01 Jan 1970 '+new Date().toTimeString()), new Date('01 Jan 1970 '+r['astronomy']['astro']['sunrise']))/this.diff_minutes(new Date('01 Jan 1970 '+r['astronomy']['astro']['sunrise']), new Date('01 Jan 1970 '+r['astronomy']['astro']['sunset'])))+h*1.2
+            this.suny = -sunRadius * Math.sin(Math.PI*this.diff_minutes(new Date('01 Jan 1970 '+new Date().toTimeString()), new Date('01 Jan 1970 '+r['astronomy']['astro']['sunrise']))/this.diff_minutes(new Date('01 Jan 1970 '+r['astronomy']['astro']['sunrise']), new Date('01 Jan 1970 '+r['astronomy']['astro']['sunset'])))+h*0.9
             /*
             console.log(this.moonx)
             console.log(this.moony)
